@@ -1,0 +1,22 @@
+name: Code cheks
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ 'dev' ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: Install deps
+        run: |
+          pip install -U pip
+          pip install -r requirements.txt
+      - name: Run fastAPI
+        run: uvicorn src.main:app
