@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-sandbox_router = APIRouter(prefix="/sandbox")
+example_router = APIRouter(prefix="/example")
 
 
-@sandbox_router.get("")
-async def get_sand():
+@example_router.get("")
+async def get_example():
     return JSONResponse({"test": "OK"})
